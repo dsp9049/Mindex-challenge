@@ -27,4 +27,14 @@ public class DataBootstrapTest {
         assertEquals("Development Manager", employee.getPosition());
         assertEquals("Engineering", employee.getDepartment());
     }
+
+    @Test
+    public void test_Paul() {
+        Employee employee = employeeRepository.findByEmployeeId("b7839309-3348-463b-a7e3-5de1c168beb3");
+        assertNotNull(employee);
+        assertEquals("Paul", employee.getFirstName());
+        assertEquals("McCartney", employee.getLastName());
+        assertEquals("Developer I", employee.getPosition());
+        assertEquals("Engineering", employee.getDepartment());
+    }
 }
