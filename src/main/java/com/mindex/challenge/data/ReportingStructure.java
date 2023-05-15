@@ -1,5 +1,9 @@
 package com.mindex.challenge.data;
 
+import com.mindex.challenge.dao.EmployeeRepository;
+import com.mindex.challenge.dao.ReportingStructureRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -8,6 +12,9 @@ public class ReportingStructure {
     private String employeeId;
     private int numberOfReports;
     private ArrayList<String> reportPeople;
+
+    @Autowired
+    private EmployeeRepository employeeRepository;
 
     public ReportingStructure(Employee employee) {
         this.employeeId = employee.getEmployeeId();
@@ -23,6 +30,12 @@ public class ReportingStructure {
         this.employee = employee;
     }
 
+    /**
+     * gets the number of reports of the given employee through all direct reports
+     * note: Subsequent employees have null information including their direct reports
+     * as of the time of writing this it is inconclusive where / why this is happening.
+     * @return number of reports
+     */
     public int getNumberOfReports() {
         ArrayList<Employee> visited = new ArrayList<>();
         ArrayList<Employee> toVisit = new ArrayList<>();
