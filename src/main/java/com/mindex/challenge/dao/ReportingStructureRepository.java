@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ReportingStructureRepository extends MongoRepository<ReportingStructure, String> {
-    ReportingStructure findByEmployeeId(String id);
+    ReportingStructure findByEmployeeId(String employeeId);
 }
